@@ -20,6 +20,15 @@ else:
           shade = attribute['value']
           return title, shade
 
+    # Sort based on offer price
+    temp = 0
+    for i in range(0, len(skuSet)):
+      for j in range(i+1, len(skuSet)):
+        if(skuSet[i]['offerPrice'] > skuSet[j]['offerPrice']):
+            temp = skuSet[i]
+            skuSet[i] = skuSet[j]
+            skuSet[j] = temp
+
     # Formatting output data
     for idx, sku in enumerate(skuSet):
       title, shade = getTitleAndShade(sku['attributes']["1"])
